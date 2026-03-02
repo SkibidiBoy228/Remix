@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Voting DApp</title>
+</head>
+<body>
+
+<h1>Voting DApp</h1>
+
+<button onclick="connectWallet()">Connect Wallet</button>
+<p id="account"></p>
+
+<hr>
+
+<h2>Create Poll</h2>
+<input id="question" placeholder="Question"><br><br>
+<input id="options" placeholder="Option1,Option2,Option3"><br><br>
+<button onclick="createPoll()">Create</button>
+
+<hr>
+
+<h2>Vote</h2>
+<input id="votePollId" placeholder="Poll ID"><br><br>
+<input id="voteOption" placeholder="Option index (0,1,2)"><br><br>
+<button onclick="vote()">Vote</button>
+
+<hr>
+
+<h2>Results</h2>
+<input id="resultPollId" placeholder="Poll ID"><br><br>
+<button onclick="getResults()">Get Results</button>
+
+<h3 id="questionText"></h3>
+<p id="results"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
