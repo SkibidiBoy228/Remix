@@ -1,14 +1,21 @@
-// This script can be used to deploy the "Storage" contract using ethers.js library.
-// Please make sure to compile "./contracts/1_Storage.sol" file before running this script.
-// And use Right click -> "Run" from context menu of the file to run the script. Shortcut: Ctrl+Shift+S
+import { ethers } from "hardhat";
 
-import { deploy } from './ethers-lib'
+async function main() {
 
-(async () => {
-  try {
-    const result = await deploy('Storage', [])
-    console.log(`address: ${result.address}`)
-  } catch (e) {
-    console.log(e.message)
-  }
-})()
+    console.log("Deploying ProductStorage...");
+
+    const ProductStorage = await ethers.getContractFactory("ProductStorage");
+
+    const productStorage = await ProductStorage.deploy();
+
+    await productStorage.waitForDeployment();
+
+    const address = await productStorage.getAddress();
+
+    console.log("ProductStorage deployed to:", address);
+}
+
+main().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+});
